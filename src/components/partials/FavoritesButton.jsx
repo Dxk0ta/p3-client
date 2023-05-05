@@ -8,6 +8,7 @@ const FavoritesButton = ({ movie }) => {
   const tmdbId = `${movie.id}`
 
   const toggleFavorite = async () => {
+  const toggleFavorite = async () => {
     try {
       if (isFavorite) {
         // remove from favorites
@@ -16,6 +17,7 @@ const FavoritesButton = ({ movie }) => {
             Authorization: `${jwt}`,
           },
         });
+        setIsFavorite(false);
         setIsFavorite(false);
       } else {
         // add to favorites
@@ -60,8 +62,8 @@ const FavoritesButton = ({ movie }) => {
   
 
   return (
-    <button type="button" class="btn btn-sm font-weight-bold" onClick={toggleFavorite}>
-      {isFavorite ? "Remove From Favorites" : "Add To Favorites"}
+    <button onClick={toggleFavorite}>
+      {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
     </button>
   );
 };
