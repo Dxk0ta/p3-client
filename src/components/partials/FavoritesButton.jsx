@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-export default function FavoritesButton(props) {
-  const [isFavorite, setIsFavorite] = useState(false); //I MIGHT NOT NEED props.isfavorite - change to false instead
+const FavoritesButton = ({ movie }) => {
+  console.log(movie)
+  const [isFavorite, setIsFavorite] = useState(false);
   const jwt = localStorage.getItem("jwt");
   const tmdbId = `${movie.id}`
 
   const toggleFavorite = async () => {
-  const toggleFavorite = async () => {
     try {
+      if (isFavorite) {
+        // remove from favorites
+        await axios.delete(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/favorites/${movie}`, {
+          headers: {
+            Authorization: `${jwt}`,
+          },
       if (isFavorite) {
         // remove from favorites
         await axios.delete(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/favorites/${movie}`, {
@@ -18,8 +23,14 @@ export default function FavoritesButton(props) {
           },
         });
         setIsFavorite(false);
-        setIsFavorite(false);
       } else {
+        // add to favorites
+        await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/favorites`, movie, {
+          headers: {
+            Authorization: `${jwt}`,
+          },
+        });
+        setIsFavorite(true);
         // add to favorites
         await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/favorites`, movie, {
           headers: {
@@ -33,32 +44,6 @@ export default function FavoritesButton(props) {
     }
   };
   const tmdbId = `${movie.id}`
-
-  const toggleFavorite = async () => {
-  const toggleFavorite = async () => {
-    try {
-      if (isFavorite) {
-        // remove from favorites
-        await axios.delete(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/favorites/${movie}`, {
-          headers: {
-            Authorization: `${jwt}`,
-          },
-        });
-        setIsFavorite(false);
-        setIsFavorite(false);
-      } else {
-        // add to favorites
-        await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/favorites`, movie, {
-          headers: {
-            Authorization: `${jwt}`,
-          },
-        });
-        setIsFavorite(true);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   useEffect(() => {
     const checkFavorite = async () => {
@@ -70,15 +55,23 @@ export default function FavoritesButton(props) {
         });
         const favorites = response.data.result;
         const ids = favorites.map(favorite => favorite.id)
+        console.log(ids)
+
+        console.log(`Sanity`, ids.includes(tmdbId), tmdbId)
         setIsFavorite(ids.includes(tmdbId));
       } catch (err) {
         console.log(err);
       }
     };
-    // get all objectid from users favorites
-    // get all 
+  // get all objectid from users favorites
+  // get all 
+
+
+
     checkFavorite();
   }, [jwt, tmdbId]);
+  
+  
 
   const toggleFavorite = async () => {
     try {
@@ -111,8 +104,8 @@ export default function FavoritesButton(props) {
 
 
   return (
-    <button type="button" className="btn btn-sm font-weight-bold" onClick={toggleFavorite}>
-      {isFavorite ? <i class="bi bi-trash3">Remove From Favorites</i> : "Add To Favorites"}
+    <button onClick={toggleFavorite}>
+      {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
     </button>
   );
 };
