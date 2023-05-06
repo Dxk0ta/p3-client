@@ -33,7 +33,7 @@ export default function Header({ currentUser, handleLogout, setCurrentUser }) {
   // })
 
   return (
-    <nav className="navbar navbar-light bg-light header">
+    <nav className="navbar navbar-light header">
       <div>
         <a className="navbar-brand navbar-link" href="/register">
           REGISTER
@@ -51,9 +51,11 @@ export default function Header({ currentUser, handleLogout, setCurrentUser }) {
           WATCH
         </a>
         {" | "}
-        <a class="navbar-brand navbar-link" href="/search">
-          SEARCH
+        <a className="navbar-brand navbar-link" href="/logout">
+          LOGOUT
         </a>
+        {" | "}
+        {"         "}<MainSearch />
       </div>
       <img className="navbar-logo" src="/logo.png" alt="logo image" />
     </nav>
