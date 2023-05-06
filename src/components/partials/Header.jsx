@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import MainSearch from "../MainSearch";
+<<<<<<< HEAD
 import { useEffect, useState } from "react";
+=======
+>>>>>>> ad44882 (Minor cleanup on routes/card)
 
 export default function Header({ currentUser, handleLogout, setCurrentUser }) {
   const [userImg, setUserImg] = useState()
@@ -43,6 +46,23 @@ export default function Header({ currentUser, handleLogout, setCurrentUser }) {
         <a className="navbar-brand navbar-link" href="/login">
           LOGIN
         </a>
+<<<<<<< HEAD
+=======
+        {" | "}
+        <a className="navbar-brand navbar-link" href="/favorites">
+          FAVORITES
+        </a>
+        {" | "}
+        <a className="navbar-brand navbar-link" href="/watchlist">
+          WATCH
+        </a>
+        {" | "}
+        <MainSearch/>
+        {" | "}
+        <a className="navbar-brand navbar-link" href="/logout">
+          LOGOUT
+        </a>
+>>>>>>> ad44882 (Minor cleanup on routes/card)
       </div>
       <img className="navbar-logo" src="/logo.png" alt="logo image" />
     </nav>
