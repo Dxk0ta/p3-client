@@ -1,16 +1,7 @@
-.popular {
-    background-color: black;
-    color:white;
-  }
-  
-  .popular-title {
-    background-color: black;
-    color:white;
-    margin: 0 auto;
-  }
-  
+.popular-title {
+    color: #d3d3d3;
+    font-size: 70px;
+    font-weight: 600;
+    opacity: 1;
+}
 
-.frame:hover {
-    transform: scale(1.1);
-      transition-duration: 0.5s;
-  }
