@@ -35,9 +35,6 @@ function Cards({ movie }) {
   const posterUrl = `https://image.tmdb.org/t/p/w780/${movie.poster_path}`;
 
   const defaultPosterUrl = DefaultPoster;
-
-  
-
   return (
     <>
       <div className="card-container">
