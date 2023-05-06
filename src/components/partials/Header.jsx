@@ -12,7 +12,6 @@ export default function Header({ currentUser, handleLogout, setCurrentUser }) {
       {/* if the user is logged in... */}
       <Link to="/">
         <span onClick={handleLogout}>Logout</span>
-        <span onClick={handleLogout}>Logout</span>
       </Link>
 
       <Link to="/profile">Profile</Link>
@@ -37,7 +36,7 @@ export default function Header({ currentUser, handleLogout, setCurrentUser }) {
   // })
 
   return (
-    <nav className="navbar navbar-light bg-light header">
+    <nav className="navbar navbar-light header">
       <div>
         <a className="navbar-brand navbar-link" href="/register">
           REGISTER
@@ -57,12 +56,11 @@ export default function Header({ currentUser, handleLogout, setCurrentUser }) {
           WATCH
         </a>
         {" | "}
-        <MainSearch/>
-        {" | "}
         <a className="navbar-brand navbar-link" href="/logout">
           LOGOUT
         </a>
->>>>>>> ad44882 (Minor cleanup on routes/card)
+        {" | "}
+        {"         "}<MainSearch />
       </div>
       <img className="navbar-logo" src="/logo.png" alt="logo image" />
     </nav>
