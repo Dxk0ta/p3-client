@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import MainSearch from "../MainSearch";
-import { useEffect, useState } from "react";
 
 export default function Header({ currentUser, handleLogout, setCurrentUser }) {
   const [userImg, setUserImg] = useState()
@@ -48,12 +47,14 @@ export default function Header({ currentUser, handleLogout, setCurrentUser }) {
           FAVORITES
         </a>
         {" | "}
-        <a class="navbar-brand navbar-link" href="/watch">
+        <a className="navbar-brand navbar-link" href="/watchlist">
           WATCH
         </a>
         {" | "}
-        <a class="navbar-brand navbar-link" href="/search">
-          SEARCH
+        <MainSearch/>
+        {" | "}
+        <a className="navbar-brand navbar-link" href="/logout">
+          LOGOUT
         </a>
       </div>
       <img className="navbar-logo" src="/logo.png" alt="logo image" />
