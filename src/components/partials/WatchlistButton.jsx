@@ -60,8 +60,8 @@ const WatchlistButton = ({ movie }) => {
   
 
   return (
-    <button type="button" class="btn btn-sm font-weight-bold" onClick={toggleWatchList}>
-      {isWatched ? "Remove From WatchList" : "Add To WatchList"}
+    <button onClick={toggleWatchList}>
+      {isWatched ? "Remove from watchList" : "Add to watchList"}
     </button>
   );
 };
