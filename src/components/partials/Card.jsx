@@ -36,19 +36,18 @@ function Cards({ movie }) {
 
   const defaultPosterUrl = DefaultPoster;
   return (
-    <>
-      <div className="card-container">
-        <Card className="card bg-dark text-white">
-          <Link to={`/movies/${movie.id}/details`}>
-            <Card.Img className="pictures" src={posterUrl} alt="Card image" />
-            <Card.ImgOverlay>
-              <Card.Title>{movie.title}</Card.Title>
-            </Card.ImgOverlay>
-          </Link>
-        </Card>
-      </div>
-      <div className="buttons">
-        <FavoritesButton movie={movie} /><WatchlistButton movie={movie} />
+    <Link to={`/movies/${movie.id}/details`}>
+      <div className="card">
+        {movie.poster_path && (
+        <img
+          src={posterUrl || defaultPosterUrl}
+          alt={`This is the "${movie.title}" poster`}
+        />
+        )}
+        {movie.title && <h2>{movie.title}</h2>}
+        {movie.overview && <p>{movie.overview}</p>}
+        <FavoritesButton movie={movie} />
+        <WatchlistButton movie={movie} />
       </div>
       </>
   );
