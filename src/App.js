@@ -171,12 +171,9 @@ function App() {
 
           <Route
             path="/search/*"
-            element={
-              <HeaderWrapper handleLogout={handleLogout} currentUser={currentUser}>
-                <SearchMovies />
-              </HeaderWrapper>
-            }
+            element={<SearchMovies />}
           />
+          
         </Routes>
       </div>
       <Footer className="footer" />
