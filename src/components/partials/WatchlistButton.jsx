@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const WatchlistButton = ({ movie }) => {
-  console.log(movie)
   const [isWatched, setIsWatched] = useState(false);
   const jwt = localStorage.getItem("jwt");
   const tmdbId = `${movie.id}`
@@ -48,9 +47,6 @@ const WatchlistButton = ({ movie }) => {
         });
         const watchList = response.data.result;
         const ids = watchList.map(favorite => favorite.id)
-        console.log(ids)
-
-        console.log(`Sanity`, ids.includes(tmdbId), tmdbId)
         setIsWatched(ids.includes(tmdbId));
       } catch (err) {
         console.log(err);
