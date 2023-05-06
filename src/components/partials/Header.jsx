@@ -27,46 +27,17 @@ export default function Header({ currentUser, handleLogout, setCurrentUser }) {
 
   console.log(currentUser)
   return (
-    <>
-      <nav className="navbar navbar-light">
-        <img className="navbar-logo" src="/logo.png" alt="Panda eating popcorn which is the CineSearch logo" />
-        <div>
-          {currentUser ?
-            <>
-              <a className="navbar-brand navbar-link" href="/movies">
-                HOME
-              </a>
-              {" | "}
-              <a className="navbar-brand navbar-link" href="/favorites">
-                FAVORITES
-              </a>
-              {" | "}
-              <a className="navbar-brand navbar-link" href="/watchlist">
-                WATCHLIST
-              </a>
-              {" | "}
-              <a className="navbar-brand navbar-link" href="/profile">
-                PROFILE
-              </a>
-              {" | "}
-              <a className="navbar-brand navbar-link" href="/" onClick={handleLogout}>
-                LOGOUT
-              </a>
-            </>
-            :
-            <>
-              <a className="navbar-brand navbar-link" href="/register">
-                REGISTER
-              </a>
-              {" | "}
-              <a className="navbar-brand navbar-link" href="/login">
-                LOGIN
-              </a>
-            </>
-          }
-        </div>
-        <MainSearch className="searchbar" />
-      </nav>
-    </>
+    <nav className="navbar navbar-light bg-light header">
+      <div>
+        <a className="navbar-brand navbar-link" href="/register">
+          REGISTER
+        </a>{" "}
+        {" | "}
+        <a className="navbar-brand navbar-link" href="/login">
+          LOGIN
+        </a>
+      </div>
+      <img className="navbar-logo" src="/logo.png" alt="logo image" />
+    </nav>
   );
 }

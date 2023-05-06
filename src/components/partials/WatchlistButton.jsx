@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
+const WatchlistButton = ({ movie }) => {
+  console.log(movie)
+  const [isWatched, setIsWatched] = useState(false);
+  const jwt = localStorage.getItem("jwt");
+  const tmdbId = `${movie.id}`
 const WatchlistButton = ({ movie }) => {
   console.log(movie)
   const [isWatched, setIsWatched] = useState(false);
@@ -60,8 +67,8 @@ const WatchlistButton = ({ movie }) => {
   
 
   return (
-    <button type="button" class="btn btn-sm font-weight-bold" onClick={toggleWatchList}>
-      {isWatched ? "Remove From WatchList" : "Add To WatchList"}
+    <button onClick={toggleWatchList}>
+      {isWatched ? "Remove from watchList" : "Add to watchList"}
     </button>
   );
 };
