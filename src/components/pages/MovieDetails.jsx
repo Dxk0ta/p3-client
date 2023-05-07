@@ -15,6 +15,13 @@ function MovieDetails(props) {
   // Set up state variables for the movie, favorites, and watch list
   const [movie, setMovie] = useState({});
   const [watchMovie, setWatchMovie] = useState([]);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
+  function toggleMenu() {
+    setIsMenuOpen(!isMenuOpen);
+  }
+
+  console.log('hello')
 
   useEffect(() => {
     const checkFavorite = async () => {
