@@ -73,6 +73,8 @@ function App() {
     }
   };
 
+  console.log(currentUser)
+
   return (
     <Router>
       <div className="App">
