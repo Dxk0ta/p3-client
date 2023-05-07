@@ -8,12 +8,10 @@ import Comments2 from "../partials/Comments2";
 import "./MovieDetails.css"
 
 // Define the MovieDetails component
-function MovieDetails({currentUser}) {
+function MovieDetails(props) {
   // Use the useParams hook to get the movie ID from the URL
   const { id } = useParams();
-  const jwt = localStorage.getItem("jwt");
-  
-  const [objectId, setObjectId] = useState(null)
+  const [currentUser, setCurrentUser] = useState(props.currentUser)
   // Set up state variables for the movie, favorites, and watch list
   const [movie, setMovie] = useState({});
   const [watchMovie, setWatchMovie] = useState([]);
@@ -106,6 +104,7 @@ function MovieDetails({currentUser}) {
       <br />
       <FavoritesButton movie={movie} objectId={objectId} currentUser={currentUser}/>
       <WatchlistButton movie={movie} />
+      <Comments2 movie={id} currentUser={currentUser} />
     </div>
   );
 }
