@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { useParams, useNavigate } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import Thread from './Thread'
 
 export default function Comments2(props) {
@@ -61,7 +62,7 @@ export default function Comments2(props) {
 
                 <button type="submit">Post Thread</button>
             </form>
-  {threadsArray}
+            {threadsArray}
         </>
     )
 }
