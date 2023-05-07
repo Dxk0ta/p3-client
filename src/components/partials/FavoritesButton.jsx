@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const FavoritesButton = ({ movie }) => {
-  const [isFavorite, setIsFavorite] = useState(false);
+export default function FavoritesButton (props) {
+  const [isFavorite, setIsFavorite] = useState(false); //I MIGHT NOT NEED props.isfavorite - change to false instead
   const jwt = localStorage.getItem("jwt");
   const tmdbId = `${movie.id}`
 
@@ -100,7 +100,7 @@ const FavoritesButton = ({ movie }) => {
 
 
   return (
-    <button type="button" class="btn btn-sm font-weight-bold" onClick={toggleFavorite}>
+    <button type="button" className="btn btn-sm font-weight-bold" onClick={toggleFavorite}>
       {isFavorite ? "Remove From Favorites" : "Add To Favorites"}
     </button>
   );
