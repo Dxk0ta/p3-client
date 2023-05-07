@@ -10,6 +10,7 @@ function MovieDetails(props) {
   // Use the useParams hook to get the movie ID from the URL
   const { id } = useParams();
   const [currentUser, setCurrentUser] = useState(props.currentUser)
+  const [currentUser, setCurrentUser] = useState(props.currentUser)
   // Set up state variables for the movie, favorites, and watch list
   const [movie, setMovie] = useState({});
   const [watchMovie, setWatchMovie] = useState([]);
@@ -85,12 +86,11 @@ function MovieDetails(props) {
         </div>
         <br />
       </div>
-      <div className="buttons">
-        <FavoritesButton movie={movie} objectId={objectId} currentUser={currentUser} />
-        <WatchlistButton movie={movie} watchObjId={watchObjId} currentUser={currentUser} />
-      </div>
+      <br />
+      <FavoritesButton movie={movie} objectId={objectId} currentUser={currentUser}/>
+      <WatchlistButton movie={movie} />
       <Comments2 movie={id} currentUser={currentUser} />
-    </>
+    </div>
   );
 }
 
