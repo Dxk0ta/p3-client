@@ -12,10 +12,49 @@ function MovieDetails(props) {
   const jwt = localStorage.getItem("jwt");
   const [watchObjId, setWatchObjId] = useState(null)
   const [objectId, setObjectId] = useState(null)
+  const jwt = localStorage.getItem("jwt");
+  const [watchObjId, setWatchObjId] = useState(null)
+  const [objectId, setObjectId] = useState(null)
   // Set up state variables for the movie, favorites, and watch list
   const [movie, setMovie] = useState({});
   const [watchMovie, setWatchMovie] = useState([]);
-  console.log('hello')
+
+  useEffect(() => {
+    const checkFavorite = async () => {
+      try {
+        const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/favorites`, {
+          headers: {
+            Authorization: `${jwt}`,
+          },
+        });
+        const favorites = response.data.result;
+        setObjectId(favorites[0]._id)
+
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    checkFavorite();
+  }, [jwt]);
+
+  useEffect(() => {
+    const checkWatch = async () => {
+      try {
+        const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/watchlist`, {
+          headers: {
+            Authorization: `${jwt}`,
+          },
+        });
+        const watch = response.data.result;
+        setWatchObjId(watch[0]._id)
+
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    checkWatch();
+  }, [jwt]);
+
 
   useEffect(() => {
     const movieDetailsUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`;
@@ -58,8 +97,8 @@ function MovieDetails(props) {
         </div>
       </div>
       <br />
-      <FavoritesButton movie={movie}/>
-      <WatchlistButton movie={movie}/>
+      <FavoritesButton movie={movie} objectId={objectId} currentUser={currentUser}/>
+      <WatchlistButton movie={movie} watchObjId={watchObjId} currentUser={currentUser}/>
     </div>
   );
 }
