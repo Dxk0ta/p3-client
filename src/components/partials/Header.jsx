@@ -55,7 +55,11 @@ export default function Header({ currentUser, handleLogout, setCurrentUser }) {
           LOGOUT
         </a>
         {" | "}
-        {"         "}<MainSearch />
+        <a className="navbar-brand navbar-link" href="/movies">
+          HOME
+        </a>
+        <a className="navbar-brand">
+        </a>
       </div>
       <img className="navbar-logo" src="/logo.png" alt="logo image" />
     </nav>
