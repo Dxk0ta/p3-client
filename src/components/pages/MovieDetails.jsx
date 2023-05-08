@@ -90,7 +90,7 @@ function MovieDetails(props) {
         className="movie-backdrop"
         src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
         alt={`This is the poster for the movie titled ${movie.title}`}
-        onClick={toggleMenu}
+        
       />
       </>
       )}
@@ -101,14 +101,13 @@ function MovieDetails(props) {
       <p>Genres: {movie.genres?.map((genre) => genre.name).join(", ")}</p>
       <p>Synopsis: {movie.overview}</p>
       <p>Movie run time: {movie.runtime} minutes</p>
+      <p className="stream-btn" onClick={toggleMenu} style={{fontFamily:"Sigmar", fontWeight:"lighter", padding:"30px"}}>Click Here To Find Potential Streams</p>
       {/* <p>Movie Homepage: {movie.homepage}</p> */}
-      </div>
       {isMenuOpen && (
   <div className="movie-dropdown">
-    <p>Now Streaming On:</p>
     {watchMovie?.map((provider) => (
       <div className="provider-image" key={provider.provider_id}>
-        <p>{`${provider.provider_name}`}</p>
+        {/* <p>{`${provider.provider_name}`}</p> */}
         <a href={`${movie.homepage}`}>
           <img
             src={`https://image.tmdb.org/t/p/w200/${provider.logo_path}`}
@@ -119,6 +118,7 @@ function MovieDetails(props) {
     ))}
   </div>
 )}
+      </div>
       <br />
       <FavoritesButton movie={movie} objectId={objectId} currentUser={currentUser}/>
       <WatchlistButton movie={movie} watchObjId={watchObjId} currentUser={currentUser}/>
