@@ -22,15 +22,6 @@ export default function Header({ currentUser, handleLogout, setCurrentUser }) {
     </>
   );
 
-  console.log(currentUser)
-
-  // useEffect(() => {
-  //   if (currentUser && currentUser.img) {
-  //     const getImg = axios.get(currentUser.img)
-  //     setUserImg(getImg)
-  //   }
-  // })
-
   return (
     <nav className="navbar navbar-light header">
       <div>
