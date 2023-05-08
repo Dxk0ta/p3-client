@@ -21,8 +21,6 @@ export default function Header({ currentUser, handleLogout, setCurrentUser }) {
     </>
   );
 
-
-  console.log(currentUser)
   return (
     <nav className="navbar navbar-light header">
       <div>
