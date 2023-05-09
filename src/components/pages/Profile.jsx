@@ -200,7 +200,8 @@ export default function Profile(props) {
             </div>
           </div>
         </div>
+        </div>
       )}
     </div>
-  );
+  )
 }
