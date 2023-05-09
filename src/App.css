@@ -6,6 +6,7 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
+
 .App {
   text-align: center;
   background-repeat: no-repeat;
@@ -16,7 +17,7 @@ body {
 }
 
 .navbar {
-  background-color: rgb(0, 0, 0);
+  background-color: rosybrown;
   height: 100px !important;
   color: white
 }
@@ -24,14 +25,7 @@ body {
 
 
 .navbar-logo {
-  height: 95px;
-  justify-content: baseline;
-  margin: 0 10px;
-}
-
-.navbar-name {
-  height: 80px;
-  /* justify-content: baseline; */
+  height: 100px;
 }
 
 .navbar-light {
