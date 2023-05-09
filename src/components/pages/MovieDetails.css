@@ -2,15 +2,7 @@
 .movie-details {
   position: absolute;
   width: 100vw;
-  position: absolute;
-  width: 100vw;
-  position: absolute;
-  width: 100vw;
   height: 600px;
-  object-fit: contain;
-  text-align: left;
-  object-fit: contain;
-  text-align: left;
   object-fit: contain;
   text-align: left;
 }
@@ -34,7 +26,6 @@
 
 /* Movie backdrop */
 .movie-backdrop {
-  z-index: -1;
   z-index: -1;
   position: absolute;
 
