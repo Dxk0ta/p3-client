@@ -28,11 +28,7 @@ export default function Header({ currentUser, handleLogout, setCurrentUser }) {
   return (
     <>
       <nav className="navbar navbar-light">
-        <div className="logos">
-          <img className="navbar-logo" src="/panda.png" alt="Panda eating popcorn which is the CineSearch logo" />
-          <img className="navbar-name" src="/cinesearch_white.png" alt="Panda eating popcorn which is the CineSearch logo" />
-        </div>
-        <MainSearch />
+        <img className="navbar-logo" src="/logo.png" alt="Panda eating popcorn which is the CineSearch logo" />
         <div>
           {currentUser ?
             <>
