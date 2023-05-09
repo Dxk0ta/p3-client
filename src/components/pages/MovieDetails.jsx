@@ -23,6 +23,7 @@ function MovieDetails(props) {
   function toggleMenu() {
     setIsMenuOpen(!isMenuOpen);
   }
+  console.log(watchMovie)
 
   useEffect(() => {
     const checkFavorite = async () => {
