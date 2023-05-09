@@ -24,7 +24,6 @@ body {
 }
 
 
-
 .navbar-logo {
   height: 100px;
 }
@@ -32,6 +31,8 @@ body {
 .navbar-light {
   padding: 25px;
 }
+
+
 
 .navbar-link {
   margin: 0px 15px;
