@@ -3,7 +3,6 @@ import MainSearch from "../MainSearch";
 import { useEffect, useState } from "react";
 
 export default function Header({ currentUser, handleLogout, setCurrentUser }) {
-export default function Header({ currentUser, handleLogout, setCurrentUser }) {
   const loggedIn = (
     <>
       {/* if the user is logged in... */}
@@ -23,8 +22,15 @@ export default function Header({ currentUser, handleLogout, setCurrentUser }) {
     </>
   );
 
-
   console.log(currentUser)
+
+  // useEffect(() => {
+  //   if (currentUser && currentUser.img) {
+  //     const getImg = axios.get(currentUser.img)
+  //     setUserImg(getImg)
+  //   }
+  // })
+
   return (
     <>
       <nav className="navbar navbar-light">
@@ -54,6 +60,19 @@ export default function Header({ currentUser, handleLogout, setCurrentUser }) {
               {" | "}
               <a className="navbar-brand navbar-link" href="/" onClick={handleLogout}>
                 LOGOUT
+              </a>
+              {" | "}
+              <a className="navbar-brand navbar-link" href="/profile">
+                <>
+                  {currentUser.img ?
+                    <img className="navProfile" src={currentUser.img} />
+                    :
+                    <>
+                      PROFILE
+                    </>
+
+                  }
+                </>
               </a>
             </>
             :
