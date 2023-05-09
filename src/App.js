@@ -85,6 +85,7 @@ function App() {
 
   return (
     <Router>
+      <Header handleLogout={handleLogout} currentUser={currentUser} />
       <div className="App">
         <Routes>
           <Route path="/" element={<FrontPage />} />

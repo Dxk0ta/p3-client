@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import MainSearch from "../MainSearch";
+import { useEffect, useState } from "react";
 
 export default function Header({ currentUser, handleLogout, setCurrentUser }) {
-  const [userImg, setUserImg] = useState()
   const loggedIn = (
     <>
       {/* if the user is logged in... */}
@@ -23,45 +23,49 @@ export default function Header({ currentUser, handleLogout, setCurrentUser }) {
     </>
   );
 
+
   console.log(currentUser)
-
-  // useEffect(() => {
-  //   if (currentUser && currentUser.img) {
-  //     const getImg = axios.get(currentUser.img)
-  //     setUserImg(getImg)
-  //   }
-  // })
-
   return (
-    <nav className="navbar navbar-light header">
-      <div>
-        <a className="navbar-brand navbar-link" href="/register">
-          REGISTER
-        </a>
-        {" | "}
-        <a className="navbar-brand navbar-link" href="/login">
-          LOGIN
-        </a>
-        {" | "}
-        <a class="navbar-brand navbar-link" href="/favorites">
-          FAVORITES
-        </a>
-        {" | "}
-        <a className="navbar-brand navbar-link" href="/watchlist">
-          WATCH
-        </a>
-        {" | "}
-        <a className="navbar-brand navbar-link" href="/logout">
-          LOGOUT
-        </a>
-        {" | "}
-        <a className="navbar-brand navbar-link" href="/movies">
-          HOME
-        </a>
-        <a className="navbar-brand">
-        </a>
-      </div>
-      <img className="navbar-logo" src="/logo.png" alt="logo image" />
-    </nav>
+    <>
+      <nav className="navbar navbar-light">
+        <img className="navbar-logo" src="/logo.png" alt="Panda eating popcorn which is the CineSearch logo" />
+        <div>
+          {currentUser ?
+            <>
+              <a className="navbar-brand navbar-link" href="/movies">
+                HOME
+              </a>
+              {" | "}
+              <a className="navbar-brand navbar-link" href="/favorites">
+                FAVORITES
+              </a>
+              {" | "}
+              <a className="navbar-brand navbar-link" href="/watchlist">
+                WATCHLIST
+              </a>
+              {" | "}
+              <a className="navbar-brand navbar-link" href="/profile">
+                PROFILE
+              </a>
+              {" | "}
+              <a className="navbar-brand navbar-link" href="/" onClick={handleLogout}>
+                LOGOUT
+              </a>
+            </>
+            :
+            <>
+              <a className="navbar-brand navbar-link" href="/register">
+                REGISTER
+              </a>
+              {" | "}
+              <a className="navbar-brand navbar-link" href="/login">
+                LOGIN
+              </a>
+            </>
+          }
+        </div>
+        <MainSearch className="searchbar" />
+      </nav>
+    </>
   );
 }
