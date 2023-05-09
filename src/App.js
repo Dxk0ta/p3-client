@@ -14,6 +14,7 @@ import MovieDetails from "./components/pages/MovieDetails";
 import Movies from "./components/pages/Movies";
 import SearchMovies from "./components/pages/SearchMovies";
 import "bootstrap/dist/css/bootstrap.css";
+import FrontPage from "./components/pages/FrontPage";
 function App() {
   // the currently logged in user will be stored up here in state
   const [currentUser, setCurrentUser] = useState(null);
