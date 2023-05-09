@@ -16,7 +16,7 @@ function MovieDetails(props) {
   const [movie, setMovie] = useState({});
   const [watchMovie, setWatchMovie] = useState([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
+
   function toggleMenu() {
     setIsMenuOpen(!isMenuOpen);
   }
@@ -76,34 +76,60 @@ function MovieDetails(props) {
 
   //Render the MovieDetails Component
   return (
-    <div className="movie-details">
-      {movie.poster_path && (
-      <img
-        className="movie-poster"
-        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-        alt={`This is the poster for the movie titled ${movie.title}`}
-      />
-      )}
-      <h1>{movie.title}</h1>
-      <p>Rating: {movie.vote_average}</p>
-      <p>Adult: {movie.adult ? "Yes" : "No"}</p>
-      <p>Genres: {movie.genres?.map((genre) => genre.name).join(", ")}</p>
-      <p>Synopsis: {movie.overview}</p>
-      <p>Movie run time: {movie.runtime} minutes</p>
-      <p>Movie Homepage: {movie.homepage}</p>
-      {watchMovie?.map((provider) => (
-        <div key={provider.provider_id}>
-          <img
-            src={`https://image.tmdb.org/t/p/w200/${provider.logo_path}`}
-            alt={provider.provider_name}
-          />
-          <p>{provider.provider_name}</p>
+    <>
+      <div className="movie-details">
+        {movie.poster_path && (
+          <>
+            <div className="backdropDiv">
+              <img
+                className="movie-backdrop"
+                src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+                alt={`This is the poster for the movie titled ${movie.title}`}
+
+              />
+              <div className="backdrop-gradient"></div>
+            </div>
+            <img
+              className="movie-poster"
+              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+              alt={`This is the poster for the movie titled ${movie.title}`}
+            />
+          </>
+        )}
+        <div className="movie-text">
+          <h1>{movie.title}</h1>
+          <h3><b>Rating:</b> {movie.vote_average}</h3>
+          <p><b>Adult:</b> {movie.adult ? "Yes" : "No"}</p>
+          <p><b>Genres:</b> {movie.genres?.map((genre) => genre.name).join(", ")}</p>
+          <p><b>Synopsis:</b> {movie.overview}</p>
+          <p><b>Movie run time:</b> {movie.runtime} minutes</p>
+          <p className="stream-btn" onClick={toggleMenu} style={{ fontFamily: "Sigmar", fontWeight: "lighter", padding: "30px" }}>Click Here To Find Potential Streams</p>
+          {/* <p>Movie Homepage: {movie.homepage}</p> */}
+          {isMenuOpen && (
+            <div className="movie-dropdown">
+              {watchMovie?.map((provider) => (
+                <div className="provider-image" key={provider.provider_id}>
+                  {/* <p>{`${provider.provider_name}`}</p> */}
+                  <a href={`${movie.homepage}`}>
+                    <img
+                      src={`https://image.tmdb.org/t/p/w200/${provider.logo_path}`}
+                      alt={provider.provider_name}
+                    />
+                  </a>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
+        <br />
       </div>
-      <br />
-      <FavoritesButton movie={movie} objectId={objectId} currentUser={currentUser}/>
-      <WatchlistButton movie={movie} watchObjId={watchObjId} currentUser={currentUser}/>
-    </div>
+      <div className="buttons">
+        <FavoritesButton movie={movie} objectId={objectId} currentUser={currentUser} />
+        <WatchlistButton movie={movie} watchObjId={watchObjId} currentUser={currentUser} />
+      </div>
+      <Comments2 movie={id} currentUser={currentUser} />
+
+    </>
   );
 }
 
