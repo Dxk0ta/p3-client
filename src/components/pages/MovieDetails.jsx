@@ -131,7 +131,6 @@ function MovieDetails(props) {
         <WatchlistButton movie={movie} watchObjId={watchObjId} currentUser={currentUser} />
       </div>
       <Comments2 movie={id} currentUser={currentUser} />
-
     </>
   );
 }
