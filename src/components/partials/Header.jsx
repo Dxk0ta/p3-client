@@ -33,31 +33,50 @@ export default function Header({ currentUser, handleLogout, setCurrentUser }) {
   // })
 
   return (
-    <nav className="navbar navbar-light header">
-      <div>
-        <a className="navbar-brand navbar-link" href="/register">
-          REGISTER
-        </a>
-        {" | "}
-        <a className="navbar-brand navbar-link" href="/login">
-          LOGIN
-        </a>
-        {" | "}
-        <a class="navbar-brand navbar-link" href="/favorites">
-          FAVORITES
-        </a>
-        {" | "}
-        <a class="navbar-brand navbar-link" href="/watch">
-          WATCH
-        </a>
-        {" | "}
-        <a className="navbar-brand navbar-link" href="/logout">
-          LOGOUT
-        </a>
-        {" | "}
-        {"         "}<MainSearch />
-      </div>
-      <img className="navbar-logo" src="/logo.png" alt="logo image" />
-    </nav>
+    <>
+      <nav className="navbar navbar-light">
+        <div className="logos">
+          <img className="navbar-logo" src="/panda.png" alt="Panda eating popcorn which is the CineSearch logo" />
+          <img className="navbar-name" src="/cinesearch_white.png" alt="Panda eating popcorn which is the CineSearch logo" />
+        </div>
+        <MainSearch />
+        <div>
+          {currentUser ?
+            <>
+              <a className="navbar-brand navbar-link" href="/movies">
+                HOME
+              </a>
+              {" | "}
+              <a className="navbar-brand navbar-link" href="/favorites">
+                FAVORITES
+              </a>
+              {" | "}
+              <a className="navbar-brand navbar-link" href="/watchlist">
+                WATCHLIST
+              </a>
+              {" | "}
+              <a className="navbar-brand navbar-link" href="/profile">
+                PROFILE
+              </a>
+              {" | "}
+              <a className="navbar-brand navbar-link" href="/" onClick={handleLogout}>
+                LOGOUT
+              </a>
+            </>
+            :
+            <>
+              <a className="navbar-brand navbar-link" href="/register">
+                REGISTER
+              </a>
+              {" | "}
+              <a className="navbar-brand navbar-link" href="/login">
+                LOGIN
+              </a>
+            </>
+          }
+        </div>
+
+      </nav>
+    </>
   );
 }
