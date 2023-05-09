@@ -59,9 +59,12 @@ export default function Comments2(props) {
                 <label htmlFor="body">Thread Body:</label>
                 <textarea type="textarea" id="title" value={form.threadBody} onChange={(e) => setForm({ ...form, threadBody: e.target.value })} />
 
-                <button type="submit">Post Thread</button>
-            </form>
-            {threadsArray}
+                            <button type="submit">Post Thread</button>
+                        </form>
+             
+                    </div>
+                </>
+                : <h3>Please sign in to view discussions</h3>}
         </>
     )
 }
