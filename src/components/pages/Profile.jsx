@@ -117,66 +117,79 @@ export default function Profile(props) {
               />
             </div>
           </div>
-          <div className="col" style={{ margin: '30px 0px 3px 0px' }}>
-            <form style={{ margin: '81px 27px 10px -37px' }} onSubmit={handleEdit}>
-              <div className="col">
-
-
-                <label className="mainText" htmlFor="name">Name</label>
-                <input
-                  type="text"
-                  id="name"
-                  placeholder={props.currentUser.name}
-                  onChange={(e) => setUserData({ ...userData, name: e.target.value })}
-                  value={userData.name}
-                />
-              </div>
-              <div className="col">
-                <label className="text-white" htmlFor="username">Username</label>
-                <input
-                  type="text"
-                  id="userName"
-                  placeholder={props.currentUser.userName}
-                  onChange={(e) =>
-                    setUserData({ ...userData, userName: e.target.value })
-                  }
-                  value={userData.userName}
-                />
-              </div>
-              <div className="col">
-                <label className="text-white" htmlFor="email">Email</label>
-                <input
-                  type="text"
-                  id="email"
-                  placeholder={props.currentUser.email}
-                  onChange={(e) =>
-                    setUserData({ ...userData, email: e.target.value })
-                  }
-                  value={userData.email}
-                />
-              </div>
-              <div>
-                <label className="text-white" htmlFor="password">Password</label>
-                <input
-                  type="text"
-                  id="password"
-                  placeholder="new password"
-                  onChange={(e) =>
-                    setUserData({ ...userData, password: e.target.value })
-                  }
-                  value={userData.password}
-                  autoComplete="off"
-                />
-              </div>
-
-              <button type="button" className="btn" onClick={handleEdit}>
-                <i className="bi bi-arrow-repeat text-white">Submit</i>
-              </button>
-              <button type="button" className="btn">
-                <i className="bi bi-x cancel-button">Cancel</i>
-              </button>
-            </form>
+          <div className="col form">
+        <form style={{margin: '81px 27px 10px -37px'}}onSubmit={handleEdit}>
+          <div className="input-group input-group-sm mb-3">
+          <span className="input-group-text" id="inputGroup-sizing-sm">Name</span>
+          <input
+            type="text"
+            className="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm"
+            id="name"
+            placeholder={props.currentUser.name}
+            onChange={(e) => setUserData({ ...userData, name: e.target.value })}
+            value={userData.name}
+          />
           </div>
+          <div className="input-group input-group-sm mb-3">
+          <span className="input-group-text" id="inputGroup-sizing-sm">User Name</span>
+            <input
+              type="text"
+              id="userName"
+              className="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm"
+              placeholder={props.currentUser.userName}
+              onChange={(e) =>
+                setUserData({ ...userData, userName: e.target.value })
+              }
+              value={userData.userName}
+            />
+          </div>
+          <div className="input-group input-group-sm mb-3">
+          <span className="input-group-text" id="inputGroup-sizing-sm">Email</span>
+            <input
+              type="text"
+              id="email"
+              className="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm"
+              placeholder={props.currentUser.email}
+              onChange={(e) =>
+                setUserData({ ...userData, email: e.target.value })
+              }
+              value={userData.email}
+            />
+          </div>
+          <div className="input-group input-group-sm mb-3">
+          <span className="input-group-text" id="inputGroup-sizing-sm">Password</span>
+            <input
+              type="text"
+              id="password"
+              className="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm"
+              placeholder="new password"
+              onChange={(e) =>
+                setUserData({ ...userData, password: e.target.value })
+              }
+              value={userData.password}
+              autoComplete="off"
+            />
+          </div>
+          
+          <button type="button" className="btn">
+          <i className="bi bi-arrow-repeat text-white">Submit</i>
+            </button>
+          <button type="button" className="btn" onClick={()=> {
+            navigate('/profile');
+            window.location.reload();
+        }}>
+          <i className="bi bi-x cancel-button">Cancel</i>
+            </button>
+        </form>
+        </div>
         </div>
       ) : (
         <div className="container-fluid  text-left">
