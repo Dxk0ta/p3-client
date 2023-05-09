@@ -62,6 +62,19 @@ export default function Header({ currentUser, handleLogout, setCurrentUser }) {
               <a className="navbar-brand navbar-link" href="/" onClick={handleLogout}>
                 LOGOUT
               </a>
+              {" | "}
+              <a className="navbar-brand navbar-link" href="/profile">
+                <>
+                  {currentUser.img ?
+                    <img className="navProfile" src={currentUser.img} />
+                    :
+                    <>
+                      PROFILE
+                    </>
+
+                  }
+                </>
+              </a>
             </>
             :
             <>
