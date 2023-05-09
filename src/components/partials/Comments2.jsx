@@ -61,7 +61,7 @@ export default function Comments2(props) {
 
                 <button type="submit">Post Thread</button>
             </form>
-            {threadsArray}
+  {threadsArray}
         </>
     )
 }
