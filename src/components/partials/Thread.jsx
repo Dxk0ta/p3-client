@@ -4,8 +4,6 @@ import CommentForm from "./CommentForm"
 import axios from "axios"
 import Comments from "../pages/Comments"
 import cdnUrl from "../pages/Profile"
-import Comments from "../pages/Comments"
-import cdnUrl from "../pages/Profile"
 
 export default function Thread(props) {
     const comments = props.comments
