@@ -43,6 +43,19 @@ function App() {
       // if so, we will decode it and set the user in app state
       const decoded = jwt_decode(token);
       setCurrentUser(decoded);
+
+      // fetch the user data from the server
+      axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+        .then(response => {
+          // update the currentUser state with the username and image of the authenticated user
+          const { userName, image } = response.data;
+          setCurrentUser(prevUser => ({ ...prevUser, userName, image }));
+        })
+        .catch(error => {
+          console.error(error);
+        });
     } else {
       setCurrentUser(null);
     }
@@ -64,6 +77,7 @@ function App() {
 
   return (
     <Router>
+      <Header handleLogout={handleLogout} currentUser={currentUser} />
       <div className="App">
         <Routes>
           <Route path="/" element={<FrontPage />} />
