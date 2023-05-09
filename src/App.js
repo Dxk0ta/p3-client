@@ -14,19 +14,6 @@ import MovieDetails from "./components/pages/MovieDetails";
 import Movies from "./components/pages/Movies";
 import SearchMovies from "./components/pages/SearchMovies";
 import "bootstrap/dist/css/bootstrap.css";
-import FrontPage from "./components/pages/FrontPage";
-
-
-function HeaderWrapper({ children, handleLogout }) {
-  return (
-    <>
-      <Header handleLogout={handleLogout} />
-      {children}
-    </>
-  );
-}
-
-
 function App() {
   // the currently logged in user will be stored up here in state
   const [currentUser, setCurrentUser] = useState(null);
@@ -75,59 +62,58 @@ function App() {
 
   return (
     <Router>
-    <div className="App">
-      <Routes>
-        <Route path="/" element={<FrontPage />} />
-  
-        <Route
-        path="/register"
-        element={
-          <Register
-            currentUser={currentUser}
-            setCurrentUser={setCurrentUser}
+      <Header handleLogout={handleLogout} currentUser={currentUser} />
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<FrontPage />} />
+
+          <Route
+            path="/register"
+            element={
+              <Register
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+              />
+            }
           />
-        }
-      />
-  
-        <Route
-          path="/login"
-          element={
-            <Login
-              currentUser={currentUser}
-              setCurrentUser={setCurrentUser}
-            />
-          }
-        />
-  
-        <Route
-          path="/movies"
-          element={
-            <HeaderWrapper handleLogout={handleLogout}>
+
+          <Route
+            path="/login"
+            element={
+              <Login
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+              />
+            }
+          />
+
+          <Route
+            path="/movies"
+            element={
               <Movies
+                handleLogout={handleLogout}
                 currentUser={currentUser}
                 setCurrentUser={setCurrentUser}
               />
-            </HeaderWrapper>
-          }
-        />
-  
-        <Route
-          path="/movies/:id/details"
-          element={
-            <HeaderWrapper handleLogout={handleLogout}>
+            }
+          />
+
+          <Route
+            path="/movies/:id/details"
+            element={
               <MovieDetails
+                handleLogout={handleLogout}
                 currentUser={currentUser}
                 setCurrentUser={setCurrentUser}
               />
-            </HeaderWrapper>
-          }
-        />
-  
-        <Route
-          path="/profile"
-          element={
-            <HeaderWrapper handleLogout={handleLogout}>
+            }
+          />
+
+          <Route
+            path="/profile"
+            element={
               <Profile
+                handleLogout={handleLogout}
                 currentUser={currentUser}
                 setCurrentUser={setCurrentUser}
                 name={name}
@@ -139,49 +125,38 @@ function App() {
                 msg={msg}
                 setMsg={setMsg}
               />
-            </HeaderWrapper>
-          }
-        />
-  
-        <Route
-          path="/favorites"
-          element={
-            <HeaderWrapper handleLogout={handleLogout}>
+            }
+          />
+
+          <Route
+            path="/favorites"
+            element={
               <Favorites
                 listName={"Favorites"}
+                handleLogout={handleLogout}
                 currentUser={currentUser}
                 setCurrentUser={setCurrentUser}
               />
-            </HeaderWrapper>
-          }
-        />
-  
-        <Route
-          path="/watchlist"
-          element={
-            <HeaderWrapper handleLogout={handleLogout}>
+            }
+          />
+
+          <Route
+            path="/watchlist"
+            element={
               <Watchlist
                 listName={"Watchlist"}
+                handleLogout={handleLogout}
                 currentUser={currentUser}
                 setCurrentUser={setCurrentUser}
               />
-            </HeaderWrapper>
-          }
-        />
-  
-        <Route
-          path="/search/*"
-          element={
-            <HeaderWrapper handleLogout={handleLogout}>
-              <SearchMovies />
-            </HeaderWrapper>
-          }
-        />
-      </Routes>
-    </div>
-    <Footer className="footer" />
-  </Router>
-  
+            }
+          />
+
+          <Route path="/search/*" element={<SearchMovies />} />
+        </Routes>
+      </div>
+      <Footer className="footer" />
+    </Router>
   );
 }
 
