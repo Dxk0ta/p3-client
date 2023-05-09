@@ -59,7 +59,7 @@ function MovieDetails(props) {
       <FavoritesButton movie={movie} objectId={objectId} currentUser={currentUser}/>
       <WatchlistButton movie={movie} />
       <Comments2 movie={id} currentUser={currentUser} />
-    </div>
+    </>
   );
 }
 
