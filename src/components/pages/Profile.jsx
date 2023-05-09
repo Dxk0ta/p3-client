@@ -25,6 +25,7 @@ export default function Profile(props) {
       const fileInfo = await file.promise();
       const cdnUrl = fileInfo.cdnUrl;
       setUserData({ ...userData, img: cdnUrl }, () => { });
+      setUserData({ ...userData, img: cdnUrl }, () => { });
       // Make a POST request to update the currentUser object with the UUID of the uploaded image
     } catch (err) {
       console.log(err);
