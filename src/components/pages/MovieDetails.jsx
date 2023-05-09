@@ -16,7 +16,6 @@ function MovieDetails(props) {
   const [watchMovie, setWatchMovie] = useState([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-
   function toggleMenu() {
     setIsMenuOpen(!isMenuOpen);
   }
@@ -92,6 +91,7 @@ function MovieDetails(props) {
         <WatchlistButton movie={movie} watchObjId={watchObjId} currentUser={currentUser} />
       </div>
       <Comments2 movie={id} currentUser={currentUser} />
+
     </>
   );
 }
