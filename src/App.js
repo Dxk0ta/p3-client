@@ -30,14 +30,6 @@ function App() {
       // if so, we will decode it and set the user in app state
       const decoded = jwt_decode(token);
       setCurrentUser(decoded);
-  // useEffect -- if the user navigates away form the page, we will log them back in
-  useEffect(() => {
-    // check to see if token is in storage
-    const token = localStorage.getItem("jwt");
-    if (token) {
-      // if so, we will decode it and set the user in app state
-      const decoded = jwt_decode(token);
-      setCurrentUser(decoded);
 
       // fetch the user data from the server
       axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/`, {

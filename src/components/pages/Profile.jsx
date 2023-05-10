@@ -101,6 +101,9 @@ export default function Profile(props) {
             <div className="col">
 
               <div style={{ margin: '42px 0px 0px 42px' }}>
+            <div className="col">
+
+              <div style={{ margin: '42px 0px 0px 42px' }}>
                 <img
                   src={props.currentUser?.img ? props.currentUser.img : logo}
                   alt="This is the current default profile pic which is a person with no face"
